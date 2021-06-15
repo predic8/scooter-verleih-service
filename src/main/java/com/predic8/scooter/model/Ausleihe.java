@@ -1,13 +1,13 @@
 package com.predic8.scooter.model;
 
-public class ScooterBuchung {
+public class Ausleihe {
 
     private String benutzer;
 
-    public ScooterBuchung() {
+    public Ausleihe() {
     }
 
-    public ScooterBuchung(String benutzer) {
+    public Ausleihe(String benutzer) {
         this.benutzer = benutzer;
     }
 

@@ -1,0 +1,11 @@
+POST http://localhost:8080/scooter/11/ausleihen
+Content-Type: application/json
+
+{
+  "benutzer": "string"
+}
+
+###
+
+
+
