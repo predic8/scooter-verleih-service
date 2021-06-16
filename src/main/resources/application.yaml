@@ -24,9 +24,9 @@ management:
     prometheus:
       enabled: true
 
-opentracing:
-  jaeger:
-    service-name: verleih-service
-    enabled: true
-    udp-sender:
-      host: localhost
+#opentracing:
+#  jaeger:
+#    service-name: verleih-service
+#    enabled: true
+#    udp-sender:
+#      host: localhost
