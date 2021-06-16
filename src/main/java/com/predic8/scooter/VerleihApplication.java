@@ -18,7 +18,7 @@ import java.time.LocalDate;
 
 @EnableFeignClients
 //@EnableRetry
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @SpringBootApplication
 public class VerleihApplication {
 

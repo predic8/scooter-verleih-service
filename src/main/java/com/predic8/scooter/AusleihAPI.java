@@ -35,7 +35,7 @@ public class AusleihAPI {
         try {
             ausleihService.ausleihen(id, ausleihe);
         } catch (Exception e) {
-            log.warn("Ex  " + e);
+            log.warn("Exception:  " + e);
             return ok(new AusleihResponse("fehlgeschlagen"));
         }
 
