@@ -3,6 +3,7 @@ package com.predic8.scooter;
 import com.predic8.scooter.model.*;
 import io.swagger.annotations.Scope;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.retry.annotation.*;
 import org.springframework.stereotype.Service;

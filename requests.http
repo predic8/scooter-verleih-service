@@ -1,4 +1,4 @@
-POST http://localhost:8080/scooter/2/ausleihen
+POST http://localhost:8080/scooter/22/ausleihen
 Content-Type: application/json
 
 {

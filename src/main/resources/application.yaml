@@ -24,9 +24,10 @@ management:
     prometheus:
       enabled: true
 
-#opentracing:
-#  jaeger:
-#    service-name: verleih-service
-#    enabled: true
-#    udp-sender:
-#      host: localhost
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        web:
+#          filter:
+#            CommonsRequestLoggingFilter: DEBUG
