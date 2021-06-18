@@ -7,6 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.annotation.EnableRetry;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -17,8 +18,6 @@ import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import java.time.LocalDate;
 
 @EnableFeignClients
-//@EnableRetry
-@EnableDiscoveryClient
 @SpringBootApplication
 public class VerleihApplication {
 
@@ -42,5 +41,15 @@ public class VerleihApplication {
     UiConfiguration uiConfig() {
         return UiConfigurationBuilder.builder()
                 .build();
+    }
+
+    @Bean
+    public CommonsRequestLoggingFilter requestLoggingFilter() {
+        CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
+        loggingFilter.setIncludeClientInfo(true);
+        loggingFilter.setIncludeQueryString(true);
+        loggingFilter.setIncludePayload(true);
+        loggingFilter.setIncludeHeaders(false);
+        return loggingFilter;
     }
 }

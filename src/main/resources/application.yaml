@@ -3,10 +3,11 @@ spring:
     name: verleih-service
   kafka:
     bootstrap-servers: localhost:9092
+
   cloud:
-    consul:
-      discovery:
-        instanceId: ${spring.application.name}:${random.value}
+    loadbalancer:
+      ribbon:
+        enabled: false
 
 server:
   port: 8080
@@ -23,9 +24,10 @@ management:
     prometheus:
       enabled: true
 
-#opentracing:
-#  jaeger:
-#    service-name: OpenTracingAppA
-#    enabled: true
-#    udp-sender:
-#      host: localhost
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        web:
+#          filter:
+#            CommonsRequestLoggingFilter: DEBUG

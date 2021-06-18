@@ -40,7 +40,7 @@ public class AusleihAPI {
         try {
             ausleihService.ausleihen(id, ausleihe);
         } catch (Exception e) {
-            log.warn("Ex  " + e);
+            log.warn("Exception:  " + e);
             meterRegistry.counter("Ausleihefehlschlag").increment();
             return ok(new AusleihResponse("fehlgeschlagen"));
         }
