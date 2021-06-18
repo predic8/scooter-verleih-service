@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.invoke.MethodHandles;
+import java.util.UUID;
 
 import static org.springframework.http.ResponseEntity.ok;
 
-@Api(value = "Ausleih API",tags = "Scooter")
+@Api(value = "Ausleih API", tags = "Scooter")
 @RestController
 public class AusleihAPI {
 
@@ -35,17 +36,19 @@ public class AusleihAPI {
 
         log.info("Scooter mit ID: " + id + " soll verliehen werden an Benutzer mit ID: " + ausleihe.getBenutzer());
 
-        meterRegistry.counter("Ausleihe").increment();
+        meterRegistry.counter("ausleihe").increment();
 
+        String fahrtId = UUID.randomUUID().toString();
         try {
-            ausleihService.ausleihen(id, ausleihe);
+            ausleihService.ausleihen(id, ausleihe, fahrtId);
         } catch (Exception e) {
             log.warn("Exception:  " + e);
-            meterRegistry.counter("Ausleihefehlschlag").increment();
-            return ok(new AusleihResponse("fehlgeschlagen"));
+            meterRegistry.counter("ausleihe.fehler").increment();
+            return ok(new AusleihResponse("fehler",fahrtId));
         }
 
-        return ok(new AusleihResponse("erfolgreich"));
+        meterRegistry.counter("ausleihe.erfolg").increment();
+        return ok(new AusleihResponse("erfolg", fahrtId));
     }
 
 }

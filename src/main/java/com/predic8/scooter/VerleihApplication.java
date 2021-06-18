@@ -2,11 +2,8 @@ package com.predic8.scooter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
-import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -17,7 +14,6 @@ import springfox.documentation.swagger.web.UiConfigurationBuilder;
 
 import java.time.LocalDate;
 
-@EnableFeignClients
 @SpringBootApplication
 public class VerleihApplication {
 
