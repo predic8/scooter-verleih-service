@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(name = "verfuegbarkeitsService", url = "http://localhost:8081/")
 public interface VerfuegbarkeitsClient {
 
-//    @Retryable(maxAttempts = 5)
     @RequestMapping(method = RequestMethod.GET, value = "/scooter/{id}/verfuegbarkeit")
     ResponseEntity<Verfuegbarkeit> pruefeVerfuegbarkeit(@PathVariable("id") String id);
 }
