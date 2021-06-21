@@ -2,7 +2,7 @@ POST http://localhost:8080/scooter/22/ausleihen
 Content-Type: application/json
 
 {
-  "benutzer": "string"
+  "benutzer": "123"
 }
 
 ###
