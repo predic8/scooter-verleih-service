@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.filter.CommonsRequestLoggingFilter;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -15,10 +14,10 @@ import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import java.time.LocalDate;
 
 @SpringBootApplication
-public class VerleihApplication {
+public class VerleihApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(VerleihApplication.class, args);
+        SpringApplication.run(VerleihApp.class, args);
     }
 
     @Bean
@@ -39,13 +38,4 @@ public class VerleihApplication {
                 .build();
     }
 
-    @Bean
-    public CommonsRequestLoggingFilter requestLoggingFilter() {
-        CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
-        loggingFilter.setIncludeClientInfo(true);
-        loggingFilter.setIncludeQueryString(true);
-        loggingFilter.setIncludePayload(true);
-        loggingFilter.setIncludeHeaders(false);
-        return loggingFilter;
-    }
 }

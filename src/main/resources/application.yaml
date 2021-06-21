@@ -23,11 +23,4 @@ management:
         include: "*"
     prometheus:
       enabled: true
-
-#logging:
-#  level:
-#    org:
-#      springframework:
-#        web:
-#          filter:
-#            CommonsRequestLoggingFilter: DEBUG
+ource-role-mappings: true
