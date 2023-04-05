@@ -1,0 +1,66 @@
+asyncapi: 2.5.0
+info:
+  title: Scooter Verleih API
+  version: 1.0.0
+  description: |
+    The Scooter API allows you to rent and return Scooters.
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  test:
+    url: localhost:9092
+    protocol: kafka
+  production:
+    url: kafka.scooter.svc.cluster.local:9092
+    protocol: kafka
+channels:
+  scooter.ausleihe:
+    publish:
+      summary: Message showing that a scooter has been rented.
+      operationId: ausleihListener
+      message:
+        $ref: '#/components/messages/Verleih'
+  scooter.rueckgabe:
+    publish:
+      operationId: rueckgabeListener
+      message:
+        $ref: '#/components/messages/Rueckgabe'
+components:
+  messages:
+    Verleih:
+      name: VerleihDTO
+      payload:
+        $ref: '#/components/schemas/VerleihDTO'
+    Rueckgabe:
+      name: RueckgabeDTO
+      payload:
+        $ref: '#/components/schemas/RueckgabeDTO'
+  schemas:
+    VerleihDTO:
+      type: object
+      properties:
+        fahrtId:
+          type: string
+          format: uuid
+          description: Generated ID for the current rent.
+        scooterId:
+          type: string
+        userId:
+          type: string
+        verleihBeginn:
+          type: string
+          format: date-time
+          description: At which time did the customer rent the scooter.
+    RueckgabeDTO:
+      type: object
+      properties:
+        fahrtId:
+          type: string
+          format: uuid
+          description: Generated ID for the current rent.
+        scooterId:
+          type: string
+        rueckgabe:
+          type: string
+          format: date-time
